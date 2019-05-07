@@ -9,10 +9,10 @@ RUN curl -o ./sonarscanner.zip -L https://binaries.sonarsource.com/Distribution/
 	unzip sonarscanner.zip && \
 	rm sonarscanner.zip && \
 	mv sonar-scanner-${SONAR_VERSION}-linux sonar-scanner
-RUN groupadd app && useradd -g app -r --shell /bin/bash app
+RUN groupadd app && useradd -g app -r --shell /bin/bash --create-home app
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/sonar-scanner/bin
 
-WORKDIR /app
+WORKDIR /home/app
 USER app
 
